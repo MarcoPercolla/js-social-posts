@@ -55,3 +55,8 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+// per ogni oggetto nell'array creo un div post con un ciclo forEach
+// usero Element."quello che mi serve" per andare a compilare i vari post
+// ad ogni ciclo pushero il nuovo post nel html del container
+// aggiungo addEventListener ai bottoni per i like
