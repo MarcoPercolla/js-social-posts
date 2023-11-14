@@ -32,17 +32,17 @@ const posts = [
         "likes": 78,
         "created": "2021-05-15"
     },
-    {
-        "id": 4,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=24",
-        "author": {
-            "name": "Luca Formicola",
-            "image": null
-        },
-        "likes": 56,
-        "created": "2021-04-03"
-    },
+    // {
+    //     "id": 4,
+    //     "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+    //     "media": "https://unsplash.it/600/400?image=24",
+    //     "author": {
+    //         "name": "Luca Formicola",
+    //         "image": null
+    //     },
+    //     "likes": 56,
+    //     "created": "2021-04-03"
+    // },
     {
         "id": 5,
         "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
@@ -62,27 +62,27 @@ const posts = [
 // aggiungo addEventListener ai bottoni per i like
 
 
-const container = document.getElementById("container");
+
 
 // per ogni oggetto nell'array creo un div post con un ciclo forEach
 let postCards = ""
 posts.forEach(element => {
-    let postCard = `
-    <div class="post">
+    let postCard = 
+    `<div class="post" id="${element.id}">
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">                    
+                    <img class="profile-pic" src="${element.author.image}" alt="Phil Mangione">                    
                 </div>
                 <div class="post-meta__data">
-                    <div class="post-meta__author">Phil Mangione</div>
-                    <div class="post-meta__time">4 mesi fa</div>
+                    <div class="post-meta__author">${element.author.name}</div>
+                    <div class="post-meta__time">${element.created}</div>
                 </div>                    
             </div>
         </div>
-        <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+        <div class="post__text">${element.content}</div>
         <div class="post__image">
-            <img src="https://unsplash.it/600/300?image=171" alt="">
+            <img src="${element.media}" alt="">
         </div>
         <div class="post__footer">
             <div class="likes js-likes">
@@ -93,12 +93,16 @@ posts.forEach(element => {
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                    Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
                 </div>
             </div> 
         </div>            
-    </div> `
+    </div> `;
+    console.log(postCard ,"POSTCARD");
     postCards += postCard;
+    console.log(postCards)
 });
-
-container.innerHTML = postCards;
+console.log(postCards);
+document.getElementById("container").innerHTML = postCards;
+// immagine null da sostituire con monogramma
+// element.created va rielaborato in formato americano e in tot mesi fa se creato meno di un anno fa (dopo)
