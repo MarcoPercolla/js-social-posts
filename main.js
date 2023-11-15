@@ -56,9 +56,6 @@ const posts = [
     }
 ];
 
-
-
-
 // per ogni oggetto nell'array creo un div post con un ciclo forEach
 let postCards = ""
 posts.forEach((element, i) => {
@@ -98,17 +95,13 @@ posts.forEach((element, i) => {
         </div>            
     </div> `;
 
-
     postCards += postCard;
-
-
-
 
 });
 
 document.getElementById("container").innerHTML = postCards;
-// immagine null da sostituire con monogramma
-// element.created va rielaborato in formato americano e in tot mesi fa se creato meno di un anno fa (dopo)
+
+
 
 
 // creo un evento per ogni post collegato al proprio bottone, questo richiama la proprietà ("like-button--liked")css con un toggle al click e sfrutta
@@ -132,17 +125,17 @@ for (let i = 0; i < btns.length; i++) {
 
 
 // funzioni
-
+// element.created va rielaborato in formato americano e in tot mesi fa se creato meno di un anno fa (dopo)
 // converto data creazione in "anni fa"
 function timeCalc(postDate) {
     let data = new Date();
     data = data.getFullYear();
     let anno = parseInt(postDate);
-    
+
 
     data -= anno;
 
-    return `${data} anni fa, il `;
+    return `${data} anni fa `;
 }
 
 
